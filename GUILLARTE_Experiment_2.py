@@ -1,3 +1,4 @@
+# Function to determine tax deduction
 def taxRate(income):
     if income > 250000 and income <= 400000:
         taxDeduction = income * 0.15
@@ -13,13 +14,18 @@ def taxRate(income):
         taxDeduction = 0
     return taxDeduction
 
+# Asks user for annual income
 annualIncome = float(input("Enter your annual income: "))
-print()
+print() # Adds blank line
+# Condition message for tax deduction
 if taxRate(annualIncome) == 0:
     print("You have no tax deduction")
 else:
     print("Your tax deduction is: Php {}".format(taxRate(annualIncome)))
 
+# Computes for his/her actual income
 actualIncome = annualIncome - taxRate(annualIncome)
 print("Your final income is {}".format(actualIncome))
+
+# A "sleep" function
 input("Press enter to continue...")

@@ -58,7 +58,7 @@ while trials <= 11:
     try:
         guess = int(input("Guess the number: "))
         if guess == randInteger: # Win condition
-            print("Congratulations, you have guessed the correct number!")
+            print("Congratulations, you have guessed the correct number ({})!".format(randInteger))
             print("Number of trials: {}".format(trials))
             break
         elif guess < randInteger: # Hint conditions

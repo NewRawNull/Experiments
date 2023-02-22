@@ -1,81 +1,67 @@
 import random, os
 
+# Initialize of variables
 trials = 0
 inMain = True
 
-def easyMode():
-    winNumber = random.randint(1, 15)
-    return winNumber
-    
-def normalMode():
-    winNumber = random.randint(1, 40)
-    return winNumber
- 
-def hardMode():
-    winNumber = random.randint(1, 85)
-    return winNumber
-  
-def insaneMode():
-    winNumber = random.randint(1, 140)
-    return winNumber
-   
-def impossibleMode():
-    winNumber = random.randint(1, 300)
-    return winNumber
-
-while inMain == True:
+# Main UI loop
+while True:
     print("Choose difficulty:")
-    print("[1] Easy (1-15)")
-    print("[2] Normal (1-40)")
-    print("[3] Hard (1-85)")
-    print("[4] Insane (1-140)")
-    print("[5] Impossible (1-300)")
+    print("[1] Easy (1-20)")
+    print("[2] Normal (1-60)")
+    print("[3] Hard (1-130)")
+    print("[4] Insane (1-400)")
+    print("[5] Impossible (1-1000)")
     print()
+    
+    # Detect error in input
     try:
         option = int(input("Type option: "))
         os.system("CLS")
         if option == 1:
-            randInteger = easyMode()
-            print("Easy Mode selected (1-15)")
-            inMain = False
+            randInteger = random.randint(1, 20)
+            print("Easy Mode selected (1-20)")
+            break
         elif option == 2:
-            randInteger = normalMode()
-            print("Normal Mode selected (1-40)")
-            inMain = False
+            randInteger = random.randint(1, 60)
+            print("Normal Mode selected (1-60)")
+            break
         elif option == 3:
-            randInteger = hardMode()
-            print("Hard Mode selected (1-85)")
-            inMain = False
+            randInteger = random.randint(1, 130)
+            print("Hard Mode selected (1-130)")
+            break
         elif option == 4:
-            randInteger = insaneMode()
-            print("Insane Mode selected (1-140)")
-            inMain = False
+            randInteger = random.randint(1, 400)
+            print("Insane Mode selected (1-400)")
+            break
         elif option == 5:
-            randInteger = impossibleMode()
-            print("Impossible Mode selected (1-300)")
-            inMain = False
+            randInteger = random.randint(1, 1000)
+            print("Impossible Mode selected (1-1000)")
+            break
         else:
+            # Run when integer but wrong option
             print("Invalid input!")
             input("Press Enter to continue...")
     except:
+        # Run when not integer
         print("Invalid Input!")
         input("Press Enter to continue...")
 
-    
-    
-
+# Actual game loop
 while trials <= 11:
     trials += 1
+    
+    # Lose condition
     if trials == 11:
         print("You lost, the correct number is {}".format(randInteger))
         break
     try:
         guess = int(input("Guess the number: "))
-        if guess == randInteger:
+        if guess == randInteger: # Win condition
             print("Congratulations, you have guessed the correct number!")
             print("Number of trials: {}".format(trials))
             break
-        elif guess < randInteger:
+        elif guess < randInteger: # Hint conditions
             print("The number is too low, try again")
         else:
             print("The number is too high try again") 
